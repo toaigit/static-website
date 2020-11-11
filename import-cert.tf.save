@@ -1,0 +1,16 @@
+resource "aws_acm_certificate" "mycert" {
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  tags = {
+     CertName = "mycert"
+     }
+  private_key = file(var.mykey)
+  certificate_body = file(var.mycert)
+  certificate_chain = file(var.mychain)
+}
+
+output "cert_arn" {
+  value = aws_acm_certificate.mycert.arn
+}
