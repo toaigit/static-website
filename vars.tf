@@ -36,10 +36,6 @@ variable "route53_zone_id" {
   type = string
   default = "YOUR-ROUTE53-ZONEID"
 }
-variable "staticsite" {
-  type = string
-  default = "site1static.resourceonline.org"
-}
 
 variable "cf_hosted_zone_id" {
   type = string

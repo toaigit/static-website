@@ -1,6 +1,7 @@
 Step1:  Import Cert to Virgina Region.
         set AWS_DEFAULT_REGION=us-east-1
         Ensure only two .tf file called import-cert.tf and vars.tf
+        Update vars.tf (bucketName,SiteName,CertFiles,Route53ZoneID)
         Run terraform plan and terraform apply
         Update the vars.tf (cert_arn) with the new certificate arn
 Step2:  Create S3 bucket
