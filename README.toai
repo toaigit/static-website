@@ -2,16 +2,15 @@ NOTE:   S3 bucket and cloud are not region specific.
         When providing the certificate information for cloudFront, the 
         certificate need to be in the us-east-1 region.
         You don't need to run step #3 if you don't need https for your website.
-Step1:  Import the certificate to Virgina Region.
+Step1:  Import the certificate in the Virgina Region.
         set AWS_DEFAULT_REGION=us-east-1
-        Ensure only two .tf file called import-cert.tf and vars.tf
+        Ensure only two .tf files called import-cert.tf and vars.tf
         Update vars.tf (bucketName,SiteName,CertFiles,Route53ZoneID)
         Run terraform plan and terraform apply
-        Update the vars.tf (cert_arn) with the new certificate arn
 Step2:  Create S3 bucket 
-        cp S3bucket.tf.save S3Bucket.tf
+        cp s3bucket.tf.save s3Bucket.tf
         Run terraform plan and terraform apply
-Step3:  Create CloudFront (skip if HTTPS/SSL is not needed)
+Step3:  Create CloudFront (skip this step if HTTPS/SSL is not needed)
         cp cdn.tf.save cdn.tf
         Run terraform plan and terraform apply
 Step4:  Create DNS Record for the CloudFron Endpoint.

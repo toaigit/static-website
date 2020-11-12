@@ -4,7 +4,7 @@ resource "aws_route53_record" "web" {
   type     = "A"
 
   alias {
-    name   = aws_cloudfront_distribution.s3_distribution.arn
+    name   = aws_cloudfront_distribution.s3_distribution.domain_name
     zone_id = var.cf_hosted_zone_id
     evaluate_target_health = false
   }

@@ -25,8 +25,8 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     }
 
     min_ttl                = 0
-    default_ttl            = 1800
-    max_ttl                = 7200
+    default_ttl            = 0
+    max_ttl                = 0
     viewer_protocol_policy = "redirect-to-https"
   }
 
@@ -43,9 +43,13 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = var.cert_arn
+    acm_certificate_arn = aws_acm_certificate.mycert.arn
     ssl_support_method = "sni-only"
     cloudfront_default_certificate = true
     minimum_protocol_version = "TLSv1.2_2019"
   }
 }
+
+output "cdn_domain_name" {
+  value = aws_cloudfront_distribution.s3_distribution.domain_name
+  }
